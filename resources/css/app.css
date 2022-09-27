@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+    @apply py-2 px-3 rounded-md  transition-all;
+}
+
+.btn-primary {
+    @apply bg-purple-600 hover:bg-purple-700 text-white;
+}
+
+.btn-white {
+    @apply text-gray-700 bg-white hover:bg-gray-50 border focus:ring-2;
+}
+
+.card {
+    @apply bg-white rounded shadow border-gray-200;
+}
+
+.card .card-header {
+    @apply px-4 py-3;
+}
+
+.screen-width {
+    @apply max-w-7xl mx-auto;
+}
+
+@media screen and (min-width: 1024px) {
+    .screen-width {
+        @apply px-8;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .screen-width {
+        @apply py-12;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .screen-width {
+        @apply py-0;
+    }
+}
