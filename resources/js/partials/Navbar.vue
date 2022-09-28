@@ -5,8 +5,11 @@
                 <div class="flex items-center justify-between h-16">
                     <div class="flex items-center">
                         <div class="flex-shrink-0">
-                            <router-link to="/" class="font-semibold italic">
-                                All Offers
+                            <router-link
+                                to="/"
+                                class="font-semibold italic text-primary"
+                            >
+                                Action UK
                             </router-link>
                         </div>
                     </div>
