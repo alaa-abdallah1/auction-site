@@ -9,7 +9,7 @@
                                 to="/"
                                 class="font-semibold italic text-primary"
                             >
-                                Action UK
+                                Auction UK
                             </router-link>
                         </div>
                     </div>
