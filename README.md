@@ -1,28 +1,28 @@
-# Scopic Auction 
+# Auction Site
 
-This app as an auction app to let users bid on items
+This app is an auction app to let users bid on items
 
-* live site https://auction-uk.herokuapp.com
+* Live site https://auction-uk.herokuapp.com
 
 # Getting started
 
-you have to install on your machine: PHP, Laravel, Composer and Node.js.
+you must install on your machine: PHP, Laravel, Composer and Node.js.
 
 ## Installation
 
 Clone the repository
 
-    git clone https://github.com/alaa5571/scopic-auction.git
+    git clone https://github.com/alaa-abdallah1/Auction-site.git
 
 Switch to the repo folder
 
-    cd scopic-auction
+    cd Auction-site
 
 Install all the dependencies using composer
 
     composer install
 
-Install all the dependencies using Npm
+Install all the dependencies using npm
 
     npm install
 
@@ -58,8 +58,8 @@ You can now access the server at http://localhost:8000
 
 **TL;DR command list**
 
-    git clone https://github.com/alaa5571/scopic-auction.git
-    cd scopic-auction
+    git clone https://github.com/alaa-abdallah1/Auction-site.git
+    cd Auction-site
     composer install
     npm install
     cp .env.example .env
@@ -89,22 +89,22 @@ You can now access the server at http://localhost:8000
 * Laravel
 * Pusher
 * Html
-* Css
+* CSS
 
 ### How Does It work?
 
-* you can visit home page and item details page to see the items and the last bid's price before make login.
-* if you want to share in bidding you have to login first
-* there is a demo account is existing in the login form you can use it to login
-* as soon as you logged in you will redirect to home page
-* you can browse items and as soon as you click ( bid now ) you will navigate to item details page
+* You can visit the home page and item details page to see the items and the last bid's price before making login.
+* If you want to share in bidding you have to login first
+* There is a demo account existing in the login form you can use it to login
+* As soon as you logged in you will redirect to the home page
+* You can browse items and as soon as you click (bid now) you will navigate to the item details page
 
 #### Item details page
 
-* you can see the item details like (name, description, available until, form to send your bidding through it and ...etc)
-* if the item is expired you'll get wanring message and you can't bid on it
-* otherwise you can put your bid as long as you don't have the maximum bid
-* if someone put a bid it will reflect on your page automatically (I'm using pusher and laravel Broadcast for real-time data)
+* You can see the item details like (name, description, available until, form to send your bidding through it and ...etc.)
+* If the item is expired, you'll get a warning message and you can't bid on it
+* Otherwise, you can put your bid if you don't have the maximum bid
+* If someone put a bid it will reflect on your page automatically (I'm using pusher and Laravel Broadcast for real-time data)
 
 
 ##### Auto Bid 
@@ -114,8 +114,9 @@ You can now access the server at http://localhost:8000
 
 #### use other accounts to login with
   ###### emails
-  * wprohaska@example.com
-  * xferry@example.com
-  * wprohaska@example.com
+  * demouser@gmail.com
+  * reyna50@example.net
+  * elody40@example.net
+  * connor.pagac@example.net
   ###### Password 
   * password
