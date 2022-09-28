@@ -115,5 +115,8 @@ You can now access the server at http://localhost:8000
 #### use other accounts to login with
   ###### emails
   * demouser@gmail.com
+  * reyna50@example.net
+  * elody40@example.net
+  * connor.pagac@example.net
   ###### Password 
   * password
