@@ -10,8 +10,7 @@
               w-full
               bg-cover
               rounded-md
-              md:h-screen
-              2xl:bg-contain
+              md:bg-contain
               lg:bg-top lg:h-full
               bg-no-repeat bg-center
             "
@@ -19,7 +18,7 @@
           ></div>
         </div>
         <div class="w-full md:w-2/5 lg:w-1/3 px-6 py-10">
-          <h3 class="font-bold mb-2">{{ item.name }}</h3>
+          <h3 class="font-bold">{{ item.name }}</h3>
           <span class="block mb-4">Minimun bid {{ item.min_bid }}$</span>
           <p class="mb-6 font-thin leading-relaxed text-sm">
             <span class="block font-semibold">Details</span>
@@ -36,14 +35,14 @@
             </span>
           </p>
 
-          <div class="flex justify-between mb-6">
+          <div class="flex flex-col space-y-4 mb-2">
             <div>
-              <span class="block">Last bid Made</span>
-              <span class="block font-semibold"> {{ item.max_bid }}$ </span>
+              <span class="block font-semibold">Available Untill</span>
+              <span class="block">{{ formatDataTime() }}</span>
             </div>
             <div>
-              <span class="block">Available Untill</span>
-              <span class="block font-semibold">{{ formatDataTime() }}</span>
+              <span class="block font-semibold">Last bid Made</span>
+              <span class="block"> {{ item.max_bid }}$ </span>
             </div>
           </div>
 
@@ -57,13 +56,13 @@
                   saveBtnText="Place A bid"
                   saveBtnClass="w-full btn btn-primary mb-2"
                 >
-                  <template #content="{ fields }">
+                  <template #content="{fields}">
                     <FormInput
                       isRequired
                       iconText="$"
                       type="number"
                       v-model="fields.max_bid"
-                      :bindOptions="{ min: +item.max_bid + 1 }"
+                      :bindOptions="{min: +item.max_bid + 1}"
                       :placeholder="`Bid Now with more than ${item.max_bid}$`"
                     />
                   </template>
@@ -140,7 +139,7 @@
                 saveBtnText="Place Auto bid"
                 saveBtnClass="w-full btn btn-primary mb-2"
               >
-                <template #content="{ fields }">
+                <template #content="{fields}">
                   <FormInput
                     isRequired
                     iconText="$"
@@ -149,7 +148,7 @@
                     label="Maximun Bid Amount"
                     v-model="fields.max_auto_bid"
                     placeholder="Maximun Bid Amount"
-                    :bindOptions="{ min: +item.max_bid + 1 }"
+                    :bindOptions="{min: +item.max_bid + 1}"
                   />
                   <FormInput
                     iconText="%"
@@ -158,7 +157,7 @@
                     v-model="fields.alert_when"
                     label="Bid Alert Notification"
                     placeholder="Bid Alert Notification"
-                    :bindOptions="{ min: 1, max: 100 }"
+                    :bindOptions="{min: 1, max: 100}"
                   />
                 </template>
               </CustomForm>
@@ -171,15 +170,15 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import moment, { now } from "moment";
-import Modal from "./../../components/Modal.vue";
-import CustomBtn from "../../components/CustomBtn.vue";
-import FormInput from "./../../components/FormInput.vue";
-import CustomForm from "./../../components/CustomForm.vue";
+import {mapGetters} from "vuex"
+import moment, {now} from "moment"
+import Modal from "./../../components/Modal.vue"
+import CustomBtn from "../../components/CustomBtn.vue"
+import FormInput from "./../../components/FormInput.vue"
+import CustomForm from "./../../components/CustomForm.vue"
 
 export default {
-  components: { CustomForm, FormInput, Modal, CustomBtn },
+  components: {CustomForm, FormInput, Modal, CustomBtn},
   data() {
     return {
       item: {},
@@ -193,152 +192,152 @@ export default {
       autoBidBtn: false,
       hasAutoBid: false,
       autoBiddingModal: false,
-    };
+    }
   },
 
   computed: {
     ...mapGetters(["isLoggedIn"]),
 
     id() {
-      return this.$route.params.id;
+      return this.$route.params.id
     },
   },
 
   methods: {
     getItmeData() {
-      this.axios.get(`/api/items/${this.id}`).then(({ data }) => {
-        this.item = data;
-        this.loader = false;
-      });
+      this.axios.get(`/api/items/${this.id}`).then(({data}) => {
+        this.item = data
+        this.loader = false
+      })
     },
 
     formatDataTime() {
-      let atThisMoment = moment(now());
-      let until = moment(this.item.available_untill);
+      let atThisMoment = moment(now())
+      let until = moment(this.item.available_untill)
       if (atThisMoment.isBefore(until)) {
-        let { _data } = moment.duration(until.diff(atThisMoment));
-        let time = "";
+        let {_data} = moment.duration(until.diff(atThisMoment))
+        let time = ""
 
         //years Format
         if (_data.years) {
           if (_data.years != 1) {
-            time += `${_data.years} Years, `;
+            time += `${_data.years} Years, `
           } else {
-            time += `a Year, `;
+            time += `a Year, `
           }
         }
 
         //months Format
         if (_data.months) {
           if (_data.months != 1) {
-            time += `${_data.months} months, `;
+            time += `${_data.months} months, `
           } else {
-            time += `a Month, `;
+            time += `a Month, `
           }
         }
 
         //years Format
         if (_data.days) {
           if (_data.days != 1) {
-            time += `${_data.days} Days, `;
+            time += `${_data.days} Days, `
           } else {
-            time += `a Day, `;
+            time += `a Day, `
           }
         }
 
         //hours Format
         if (_data.hours) {
           if (_data.hours < 10) {
-            time += `0${_data.hours}:`;
+            time += `0${_data.hours}:`
           } else {
-            time += `${_data.hours}:`;
+            time += `${_data.hours}:`
           }
         } else {
-          time += `00:`;
+          time += `00:`
         }
 
         //minutes Format
         if (_data.minutes) {
           if (_data.minutes < 10) {
-            time += `0${_data.minutes}:`;
+            time += `0${_data.minutes}:`
           } else {
-            time += `${_data.minutes}:`;
+            time += `${_data.minutes}:`
           }
         } else {
-          time += `00:`;
+          time += `00:`
         }
 
         //seconds Format
         if (_data.seconds) {
           if (_data.seconds < 10) {
-            time += `0${_data.seconds}`;
+            time += `0${_data.seconds}`
           } else {
-            time += `${_data.seconds}`;
+            time += `${_data.seconds}`
           }
         } else {
-          time += `00`;
+          time += `00`
         }
 
-        return time;
+        return time
       } else {
-        this.isClosed = true;
-        return "This bidding is closed";
+        this.isClosed = true
+        return "This bidding is closed"
       }
     },
 
     autoBid() {
-      this.autoBiddingModal = false;
+      this.autoBiddingModal = false
     },
 
     stopAutoBidding() {
-      this.stopBtnLoading = true;
+      this.stopBtnLoading = true
       this.axios
         .delete(`/api/auto-bid/${this.id}`)
-        .then(({ data }) => {
-          this.item = data;
+        .then(({data}) => {
+          this.item = data
         })
-        .finally(() => (this.stopBtnLoading = false));
+        .finally(() => (this.stopBtnLoading = false))
     },
 
     itemDetails(desc) {
       if (desc.length > 500) {
         if (this.hasReadMore) {
-          return desc.slice(500);
+          return desc.slice(500)
         }
-        return desc;
+        return desc
       } else {
-        return desc;
+        return desc
       }
     },
   },
 
   created() {
-    this.getItmeData();
+    this.getItmeData()
   },
 
   mounted() {
     setInterval(() => {
-      this.$forceUpdate(() => this.formatDataTime());
-    }, 1000);
+      this.$forceUpdate(() => this.formatDataTime())
+    }, 1000)
 
     this.$echo
       .private(`item-has-bid-${this.$store.state.user.id}`)
-      .listen("ItemWithBidsEvent", ({ itemWithBid }) => {
-        this.hasAutoBid = true;
-        this.$set(this, "item", itemWithBid);
-      });
+      .listen("ItemWithBidsEvent", ({itemWithBid}) => {
+        this.hasAutoBid = true
+        this.$set(this, "item", itemWithBid)
+      })
 
-    this.$echo.channel("update-item").listen("ItemEvent", ({ item }) => {
+    this.$echo.channel("update-item").listen("ItemEvent", ({item}) => {
       if (this.hasAutoBid) {
-        this.hasAutoBid = false;
-        return;
+        this.hasAutoBid = false
+        return
       }
 
       if (this.id == item.id) {
-        this.$set(this, "item", item);
-        this.$emit("clear-errors");
+        this.$set(this, "item", item)
+        this.$emit("clear-errors")
       }
-    });
+    })
   },
-};
+}
 </script>

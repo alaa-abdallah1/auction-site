@@ -14,20 +14,20 @@
               style="background: url(/assets/images/cover.png)"
             ></div>
           </div>
-          <div class="p-2">
-            <h4 class="truncate mb-1">{{ item.name }}</h4>
+          <div class="p-2 flex space-y-2 flex-col">
+            <h4 class="truncate">{{ item.name }}</h4>
             <div class="flex flex-wrap items-center justify-between">
               <span>{{ item.max_bid || item.min_bid }}$</span>
               <router-link
                 :to="`/items/${item.id}`"
                 class="
                   transition-all
-                  text-white
-                  bg-purple-600
-                  hover:bg-purple-700
+                  border border-purple-600
+                  hover:text-white hover:bg-purple-700
                   rounded
                   text-xs
                   p-1
+                  px-2
                 "
               >
                 Bid Now
@@ -46,28 +46,28 @@ export default {
     return {
       items: [],
       loader: true,
-    };
+    }
   },
 
   methods: {
     getItmes() {
-      this.axios.get("/api/items").then(({ data }) => {
-        this.items = data;
-        this.loader = false;
-      });
+      this.axios.get("/api/items").then(({data}) => {
+        this.items = data
+        this.loader = false
+      })
     },
   },
 
   created() {
-    this.getItmes();
+    this.getItmes()
   },
 
   mounted() {
-    this.$echo.channel("update-item").listen("ItemEvent", (payload) => {
-      this.items = this.items.map((item) => {
-        return item.id === payload.item.id ? payload.item : item;
-      });
-    });
+    this.$echo.channel("update-item").listen("ItemEvent", payload => {
+      this.items = this.items.map(item => {
+        return item.id === payload.item.id ? payload.item : item
+      })
+    })
   },
-};
+}
 </script>
