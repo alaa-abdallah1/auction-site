@@ -1,8 +1,28 @@
 # Auction Site
 
-This app is an auction app to let users bid on items
+This is an auction app that allows users to bid on items. The app is built using Laravel and Vue. Users can view a list of items up for auction, place bids on items, and view their bidding history.
 
-* Live site https://auction-uk.herokuapp.com
+## Screenshots 
+
+![image](https://github.com/alaa-abdallah1/auction-site/assets/56931924/4ef3ca0d-eb54-4f20-98dd-0256f206cb77)
+
+![image](https://github.com/alaa-abdallah1/auction-site/assets/56931924/59a5acca-b048-44d4-a3b7-cc5404f5ada3)
+
+![image](https://github.com/alaa-abdallah1/auction-site/assets/56931924/c390cd40-0d03-4936-a284-834eaca5d5c3)
+
+![image](https://github.com/alaa-abdallah1/auction-site/assets/56931924/2e033456-4c32-4f80-9c6b-f51b98e004e1)
+
+![image](https://github.com/alaa-abdallah1/auction-site/assets/56931924/4d731fca-080d-4938-93a8-3ec77fff1ad1)
+
+
+## Features
+The auction app includes the following features:
+
+- User authentication: Users can create an account and log in to the app.
+- Item listing: Users can view a list of items up for auction.
+- Item details: Users can view details about each item, including its current bid and bidding history.
+- Bidding: Users can place bids on items.
+- Bidding history: Users can view their bidding history for each item.
 
 # Getting started
 
@@ -12,11 +32,11 @@ you must install on your machine: PHP, Laravel, Composer and Node.js.
 
 Clone the repository
 
-    git clone https://github.com/alaa-abdallah1/Auction-site.git
+    git clone https://github.com/alaa-abdallah1/auction-site.git
 
 Switch to the repo folder
 
-    cd Auction-site
+    cd auction-site
 
 Install all the dependencies using composer
 
